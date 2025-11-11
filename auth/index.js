@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const config = require("../config");
+const error = require('../utils/error');
 
 const secret = config.jwt.secret;
 
@@ -17,7 +18,7 @@ const check = {
         console.log(decoded);
 
         if (decoded.id !== owner) {
-            throw new Error('No autorizado');
+            throw error('No autorizado', 401); 
         }
     },
 }
