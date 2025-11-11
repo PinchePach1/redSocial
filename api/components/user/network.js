@@ -1,5 +1,6 @@
 const express = require('express');
 
+const secure = require('./secure.js');
 const response = require('../../../network/response.js');
 const controller = require('./index.js');
 
@@ -9,7 +10,7 @@ const router = express.Router();
 router.get('/', list);
 router.get('/:id', get);
 router.post('/', upsert);
-router.put('/', upsert);
+router.put('/', secure('update'), upsert);
 
 // Internal functions
 
